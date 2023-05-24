@@ -1,0 +1,56 @@
+<div class="container bg-dark">
+  <div class="row justify-content-center">
+    <div class="col-md-6 mt-3">
+      <form [formGroup]="formData">
+        <div>
+          <label for="fullName" class="form-label text-light">Full Name:</label>
+          <input type="text" id="fullName" class="form-control" formControlName="fullName" placeholder="Enter Your Full Name" >
+      <!-- <small >Enter full name</small> -->
+        </div>
+        <div>
+          <label for="mobileNo" class="form-label text-light">Mobile No:</label>
+          <input type="text" id="mobileNo" class="form-control" formControlName="mobileNo"placeholder="Enter Your Mobile Number" >
+        </div>
+        <div>
+          <label for="emailId" class="form-label text-light">Email ID:</label>
+          <input type="email" id="emailId" class="form-control" required formControlName="emailId" placeholder="Enter Your Valid Email Id">
+        </div>
+
+        <div>
+          <div class="buttons mt-3 text-center mb-3">
+            <button class="btn btn-light mx-2" (click)="onAddMember()">Add Member</button>
+            <button class="btn btn-danger " (click)="onSaveMembers()">Save</button>
+
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="container mt-2">
+  <table class="table table-danger">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Full Name</th>
+        <th scope="col">Mobile Number</th>
+        <th scope="col">Email Id</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let member of usersData;">
+        <th scope="row"># </th>
+        <td>{{member.fullName}}</td>
+        <td>{{member.mobileNo}}</td>
+        <td>{{member.emailId}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+
+
+<router-outlet></router-outlet>
+
+
