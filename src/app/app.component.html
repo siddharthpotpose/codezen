@@ -4,21 +4,32 @@
       <form [formGroup]="formData">
         <div>
           <label for="fullName" class="form-label text-light">Full Name:</label>
-          <input type="text" id="fullName" class="form-control" formControlName="fullName" placeholder="Enter Your Full Name" >
-      <!-- <small >Enter full name</small> -->
+          <input type="text" name="fullName" class="form-control" formControlName="fullName"
+            placeholder="Enter Your Full Name">
+          <small class="text-danger" *ngIf="!formData.get('fullName')?.valid && formData.get('fullName')?.touched">Enter
+            Your
+            Full Name*</small>
         </div>
         <div>
           <label for="mobileNo" class="form-label text-light">Mobile No:</label>
-          <input type="text" id="mobileNo" class="form-control" formControlName="mobileNo"placeholder="Enter Your Mobile Number" >
+          <input type="number" name="mobileNo" class="form-control" formControlName="mobileNo"
+            placeholder="Enter Your Mobile Number">
+          <small class="text-danger" *ngIf="!formData.get('mobileNo')?.valid && formData.get('mobileNo')?.touched">Enter
+            Your
+            Valid Mobile no.*</small>
         </div>
         <div>
           <label for="emailId" class="form-label text-light">Email ID:</label>
-          <input type="email" id="emailId" class="form-control" required formControlName="emailId" placeholder="Enter Your Valid Email Id">
+          <input type="email" name="emailId" class="form-control" required formControlName="emailId"
+            placeholder="Enter Your Valid Email Id">
+          <small class="text-danger" *ngIf="!formData.get('emailId')?.valid && formData.get('emailId')?.touched">Enter
+            Your
+            Email Id*</small>
         </div>
 
         <div>
           <div class="buttons mt-3 text-center mb-3">
-            <button class="btn btn-light mx-2" (click)="onAddMember()">Add Member</button>
+            <button class="btn btn-light mx-2" [disabled]="!formData.valid" (click)="onAddMember()">Add Member</button>
             <button class="btn btn-danger " (click)="onSaveMembers()">Save</button>
 
           </div>
@@ -52,5 +63,3 @@
 
 
 <router-outlet></router-outlet>
-
-
