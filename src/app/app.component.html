@@ -40,24 +40,29 @@
 </div>
 
 <div class="container mt-2">
-  <table class="table table-danger">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Full Name</th>
-        <th scope="col">Mobile Number</th>
-        <th scope="col">Email Id</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let member of usersData;">
-        <th scope="row"># </th>
-        <td>{{member.fullName}}</td>
-        <td>{{member.mobileNo}}</td>
-        <td>{{member.emailId}}</td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="row">
+    <div class="col-lg-12 col-md-6 table-responsive">
+      <table class="table table-danger table-hover ">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Full Name</th>
+            <th scope="col">Mobile Number</th>
+            <th scope="col">Email Id</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let member of usersData;">
+            <th scope="row"># </th>
+            <td>{{member.fullName}}</td>
+            <td>{{member.mobileNo}}</td>
+            <td>{{member.emailId}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
 
 </div>
 
