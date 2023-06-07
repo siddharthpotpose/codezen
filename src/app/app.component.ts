@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-root',
@@ -26,22 +27,54 @@ export class AppComponent implements OnInit {
 
 
   onAddMember() {
+
+    Swal.fire({
+      // position: 'top-end',
+      icon: 'success',
+      title: ' Added Successfully',
+      showConfirmButton: false,
+      timer: 1500
+    })
+
 console.log(this.formData.value)
 this.usersData.push(this.formData.value);
 
   }
 
+
+
+
   onSaveMembers() {
-    const jsonData = JSON.stringify(this.usersData);
-    const blob = new Blob([jsonData], { type: 'application/json' });
-    const url = URL.createObjectURL(blob);
 
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'usersData.json';
-    a.click();
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "Do you want to save data in your device!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, save it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'Saved!',
+          'Your file has been Saved.',
+          'success'
+        )
+        const jsonData = JSON.stringify(this.usersData);
+        const blob = new Blob([jsonData], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
 
-    URL.revokeObjectURL(url);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'usersData.json';
+        a.click();
+
+        URL.revokeObjectURL(url);
+      }
+    })
+
+
   }
 
 
